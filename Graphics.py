@@ -26,5 +26,22 @@ def detectPixel(self, x, y):
 
     return not self.display[pixel_location]
 
-def clear(self):
+def clearAll(self):
     self.display = [0] * (col * row)
+
+def render(self):
+        
+        self.canvas.fill((255, 255, 255))
+
+        for i in range(self.cols * self.rows):
+            if self.display[i]:
+
+                x = (i % self.cols) * self.scale
+                y = (i // self.cols) * self.scale 
+
+                pygame.draw.rect(
+
+                    self.canvas,
+                    (0, 0, 0), 
+                    (x, y, self.scale, self.scale)
+                )
